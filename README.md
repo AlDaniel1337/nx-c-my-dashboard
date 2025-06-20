@@ -12,10 +12,6 @@ Aplicación creada siguiendo el curso de **Fernando Herrera**
 ## DEV: Ejecutar en desarrollo
 
 * Acceder al proyecto
-```bash
-cd 02-my-dashboard
-```
-
 * Instalar modulos de node
 ```bash
 npm install
