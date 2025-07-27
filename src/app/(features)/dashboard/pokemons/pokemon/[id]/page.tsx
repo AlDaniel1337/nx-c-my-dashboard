@@ -17,13 +17,23 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
-    const { name, id } = await getPokemonData( `${params.id}` );
-
-    return {
-        title: `#${ id } - ${ name }`,
-        description: `Página del pokémon ${ name }`,
-        keywords: ['']
+    try {
+        const { name, id } = await getPokemonData( `${params.id}` );
+        
+        return {
+            title: `#${ id } - ${ name }`,
+            description: `Página del pokémon ${ name }`,
+            keywords: ['']
+        }
+        
+    } catch (error) {
+        return {
+            title: `Not Found`,
+            description: `Pokémon no encontrado`,
+            keywords: ['']
+        }
     }
+
 }
 
 

@@ -24,6 +24,7 @@ export const PokemonRowImages = ( { imagesUrl, title, pokemonName } : PokemonRow
                 { imagesUrl.map( image => 
                     
                     <Image
+                        key={ image }
                         src={ image }
                         width={100}
                         height={100}
