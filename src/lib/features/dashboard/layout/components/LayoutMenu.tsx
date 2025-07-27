@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { menuItems } from './menu/menu';
+import { menuItems } from '../menu/menu';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
