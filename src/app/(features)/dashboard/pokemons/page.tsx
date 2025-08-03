@@ -1,12 +1,8 @@
 import { PokemonsReponse } from "@/lib/data/interfaces/PokemonsResponse";
 import { SimplePokemon } from "@/lib/data/entities/SimplePokemon";
 import { PokemonGrid } from "@/lib/features/pokemons/components/PokemonGrid";
-import Image from "next/image";
-import { notFound } from "next/navigation";
 
 const getPokemons = async( limit = 20, offset = 0): Promise<SimplePokemon[]> => {
-
-    // throw notFound()
 
     const data: PokemonsReponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
     .then( response => response.json() );

@@ -1,9 +1,9 @@
+import { PokemonsReponse } from "@/lib/data/interfaces/PokemonsResponse";
 import { PokemonDetailsCard } from "@/lib/features/pokemon/components/PokemonDetailsCard";
 import { PokemonMainData } from "@/lib/features/pokemon/components/pokemonMainData";
 import { PokemonRowImages } from "@/lib/features/pokemon/components/PokemonRowImages";
 import { getPokemonData } from "@/lib/services/PokemonService";
 import { Metadata } from "next";
-import Image from "next/image";
 
 
 
@@ -11,6 +11,22 @@ interface Props {
     params: {
         id: number | string;
     };
+}
+
+
+
+export async function generateStaticParams(){
+    
+    const data: PokemonsReponse = await 
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
+        .then( response => response.json() );
+    
+        const pokemons = data.results.map( pokemon => ({
+            id: pokemon.url.split('/').at(-2) ?? "",
+            name: pokemon.name
+        }))
+    
+    return pokemons.map( ({ name }) => ({ id: name }) )
 }
 
 
